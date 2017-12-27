@@ -10,7 +10,7 @@ const routes: Routes = [
      component:PagesComponent,
      children: [
           { path: 'dashboard', component: DashboardComponent },
-          { path: 'auth', loadChildren: 'app/@core/core.module#CoreModule' },
+          { path: 'auth', loadChildren: 'app/pages/auth/auth.module#AuthModule' },
           { path: '', redirectTo: 'dashboard', pathMatch: 'full',
       }]
  }
