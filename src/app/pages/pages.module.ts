@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-// import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 
 
@@ -11,7 +11,8 @@ const PAGES_COMPONENTS = [
 
 @NgModule({
   imports: [
-    PagesRoutingModule    
+    PagesRoutingModule ,
+    DashboardModule   
   ],
   declarations: [
     ...PAGES_COMPONENTS,
