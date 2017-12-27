@@ -1,3 +1,19 @@
-<p>
-  dashboard works!
-</p>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <a class="navbar-brand">
+            <img src="assets/logo.svg" class="logo bd-booticon">
+          </a>
+          <span class="navbar-brand">Resume Builder</span>
+      </div>
+      <ul class="navbar-nav">
+          <li routerLinkActive="active" class="nav-item active"><a routerLink="pages/dashboard" class=" nav-link">
+            Home <span class="sr-only">(Home)</span>
+          </a></li>
+          <li routerLinkActive="active" class="nav-item"><a routerLink="/auth/login" class=" nav-link">Login</a></li>
+          <li routerLinkActive="active" class="nav-item "><a routerLink="/auth/register" class=" nav-link">Register</a></li>
+      </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

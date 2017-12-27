@@ -8,14 +8,10 @@ const routes: Routes = [
  {
      path:'', 
      component:PagesComponent,
-     children: [{
-        path: 'dashboard',
-        component: DashboardComponent,
-      },
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full',
+     children: [
+          { path: 'dashboard', component: DashboardComponent },
+          { path: 'auth', loadChildren: 'app/@core/core.module#CoreModule' },
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full',
       }]
  }
 ];

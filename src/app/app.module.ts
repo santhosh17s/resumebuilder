@@ -4,6 +4,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+import { CoreModule } from './@core/core.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -17,7 +20,10 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    CoreModule.forRoot(),
+    NgbModule.forRoot()
   ],
   providers: [ {provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
