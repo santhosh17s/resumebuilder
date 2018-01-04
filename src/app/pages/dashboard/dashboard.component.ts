@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../model/user.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  user: User;
 
-  ngOnInit() {
+  constructor() { 
+    this.user = {
+      firstName : 'Santhosh',
+      lastName : 'kumar',
+      email : 'santhoshloud@gmail.com',
+      address1 : 'address 1',
+      address2 : 'address 2',
+      city : 'Chennai',
+      state : 'TN',
+      zip : 600000
+    };
   }
 
+  ngOnInit() {
+
+    
+  }
+
+  userSubmit() {
+    
+  }
+
+   
+    
 }
