@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AlertComponent } from '../components';
 
 @NgModule({
     imports: [
@@ -14,7 +15,10 @@ import { CommonModule } from '@angular/common';
       RouterModule,
       FormsModule
     ],
-    declarations: [DashboardComponent],
+    declarations: [
+      DashboardComponent,
+      AlertComponent
+    ],
   })
   export class DashboardModule {
   }

@@ -1,7 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AlertService } from './alert.service';
 
-const SERVICES = [];
+const SERVICES = [
+    AlertService
+];
 
 @NgModule({
     imports: [ CommonModule ],

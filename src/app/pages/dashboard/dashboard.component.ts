@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { User } from '../../model/user.model';
+import { AlertService } from '../../@core/data/alert.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   user: User;
 
-  constructor() { 
+  constructor(private alertService: AlertService) { 
     this.user = {
       firstName : 'Santhosh',
       lastName : 'kumar',
@@ -24,12 +25,28 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("welcome"); 
+  }
 
-    
+  ngAfterViewInit() {
+    //Everything you need to know about the `ExpressionChangedAfterItHasBeenCheckedError` error
+    //this.alertService.success("Welcome to Dashboard");
+  }
+
+  ngOnViewChanges() {
+
+  }
+
+  alertMessage() {
+    this.alertService.success("Welcome to Dashboard");
   }
 
   userSubmit() {
     
+  }
+
+  ngOnDestroy() {
+
   }
 
    
