@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { SystemUser } from './systemuser';
+import { SystemUser } from './systemuser.service';
 
 @Injectable()
 export class UserService {

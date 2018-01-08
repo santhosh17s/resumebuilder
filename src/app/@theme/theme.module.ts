@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HeaderComponent } from "./component";
 import { SampleLayoutComponent } from "./layout/sample/sample.layout";
 import { RouterModule } from "@angular/router";
+import { AlertComponent } from "./component/alert";
 
 
 
@@ -14,6 +15,7 @@ const NB_MODULES = [];
 const COMPONENTS = [
     HeaderComponent,
     SampleLayoutComponent,
+    AlertComponent
 ];
 const PIPES = [];
 

@@ -6,6 +6,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import { RouterModule } from '@angular/router';
+import { AuthModule } from './auth/auth.module';
 
 
 const PAGES_COMPONENTS = [
@@ -14,9 +15,10 @@ const PAGES_COMPONENTS = [
 
 @NgModule({
   imports: [
-    PagesRoutingModule ,
+    PagesRoutingModule,
     ThemeModule,
     DashboardModule,
+    AuthModule,
     RouterModule   
   ],
   declarations: [

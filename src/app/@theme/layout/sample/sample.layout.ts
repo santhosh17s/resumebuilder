@@ -6,6 +6,7 @@ import { Component, OnDestroy } from "@angular/core";
     styleUrls: ['./sample.layout.scss'],
     template: `<ngx-header></ngx-header>
                 <div class="main-content">
+                    <alert></alert>
                     <ng-content select="router-outlet"></ng-content>
                 </div>
   `
