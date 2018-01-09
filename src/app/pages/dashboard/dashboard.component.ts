@@ -1,6 +1,9 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../model/user.model';
 import { AlertService } from '../../@core/data/alert.service';
+import { SystemUser } from '../../@core/data/systemuser.service';
+import { LogUser } from '../../@core/data/log-user.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +13,18 @@ import { AlertService } from '../../@core/data/alert.service';
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   user: User;
+  //currentUser: SystemUser;
+  //currentUser: SystemUser;
 
-  constructor(private alertService: AlertService) { 
+  //@Output() loginUserNameEvent:EventEmitter<string> = new EventEmitter<string>();
+
+  constructor(private logInfo: LogUser, private alertService: AlertService) { 
+
+    //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    //this.loginUserNameEvent.emit("sss");
+    //this.currentUser = this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
     this.user = {
       firstName : 'Santhosh',
       lastName : 'kumar',
@@ -25,7 +38,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log("welcome"); 
+    //console.log("welcome"); 
+  
+
+
   }
 
   ngAfterViewInit() {

@@ -16,6 +16,7 @@ export class UserService {
     }
 
     create(user: SystemUser) {
+        console.log("from service:", user);
         return this.http.post('/api/users', user);
     }
 

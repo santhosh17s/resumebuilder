@@ -4,12 +4,16 @@ import { AlertService } from './alert.service';
 import { AuthGuard } from './guards';
 import { AuthenticationService } from './authentication.service';
 import { fakeBackendProvider } from './helper';
+import { UserService } from './user.service';
+import { LogUser } from './log-user.service';
 
 const SERVICES = [
     AlertService,
     AuthGuard,
     AuthenticationService,
-    fakeBackendProvider
+    fakeBackendProvider,
+    UserService,
+    LogUser
 ];
 
 @NgModule({

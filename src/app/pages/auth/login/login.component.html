@@ -22,8 +22,10 @@
               <input type="checkbox" formControlName="remember" class="form-check-input">
               Remember me
             </label>
+
           </div>
           <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Log In</button>
+          <a routerLink="/pages/register" class="btn">Register</a>
         </form>
       </div>  
   </div>

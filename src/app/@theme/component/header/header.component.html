@@ -6,12 +6,18 @@
             </a>
             <span class="navbar-brand">Resume Builder</span>
         </div>
-        <ul class="navbar-nav">
-            <li routerLinkActive="active" class="nav-item active"><a routerLink="/pages/dashboard" class=" nav-link">
-              Home <span class="sr-only">(Home)</span>
-            </a></li>
-            <li routerLinkActive="active" class="nav-item"><a routerLink="/pages/login" class=" nav-link">Login</a></li>
-            <li routerLinkActive="active" class="nav-item "><a routerLink="/pages/register" class=" nav-link">Register</a></li>
+        <ul class="navbar-nav" *ngIf="loginName">
+            <li routerLinkActive="active" class="nav-item active">
+                    <a routerLink="/pages/dashboard" class=" nav-link">Home <span class="sr-only">(Home)</span></a></li>
+            <li class="nav-item"><a class="nav-link">Hi, {{ loginName }} </a></li>
+            <li class="nav-item"><a [routerLink]="['/pages/login']" class="nav-link">Logout</a></li>
         </ul>
+       <!--  <ul class="navbar-nav" *ngIf="!currentUser">
+            <li routerLinkActive="active" class="nav-item active">
+                    <a routerLink="/pages/dashboard" class=" nav-link">Home <span class="sr-only">(Home)</span></a></li>
+        </ul> -->
+            <!--
+                <li routerLinkActive="active" class="nav-item"><a routerLink="/pages/login" class=" nav-link">Login</a></li> 
+                <li routerLinkActive="active" class="nav-item "><a routerLink="/pages/register" class=" nav-link">Register</a></li> -->
     </div>
   </nav>
