@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../@core/data/authentication.service';
 import { AlertService } from '../../../@core/data/alert.service';
+import { debounceTime } from 'rxjs/operator/debounceTime';
+import { Subject } from 'rxjs';
 
 export interface admin {
    username: string,
@@ -21,13 +23,17 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
+  //private _success = new Subject<string>();
+  private loginMessage: Boolean = true;
 
-  constructor(private fb: FormBuilder, private auth: AuthenticationService, private alerService: AlertService) { 
+  //@Input() dismissible: boolean = false;
+
+  constructor(private fb: FormBuilder, private auth: AuthenticationService, private alertService: AlertService) { 
 
   }
 
   ngOnInit() {
-   
+    //LOGIN FORM - REACTIVE FORM
     this.loginForm = this.fb.group({
        userName: new FormControl('', Validators.required),
        password: new FormControl(),
@@ -37,13 +43,16 @@ export class LoginComponent implements OnInit {
   }
 
   OnFormSubmit(formValue) {
-   //console.log(this.loginForm);
-    this.auth.login(formValue.formValue, formValue.password)
+    console.log(formValue.userName, formValue.password);
+    this.auth.login(formValue.userName, formValue.password)
         .subscribe(
           data => console.log(data),
-          error => { this.alerService.error(error); }
+          error => { this.alertService.error(error); }
       );
-        
+  }
+
+  closeAlert(){
+      this.loginMessage = false;
   }
 
 }

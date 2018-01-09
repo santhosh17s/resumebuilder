@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { AuthComponent } from "./auth.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { CommonModule } from "@angular/common";
     CommonModule,
     AuthRoutingModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
+
   ]
 })
 export class AuthModule{

@@ -2,6 +2,11 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-sm-8 col-md-4">
+        <p>
+            <ngb-alert  *ngIf="loginMessage" [dismissible]="true" (close)="closeAlert()">
+              <strong>Warning!</strong> Better check yourself.</ngb-alert>
+          </p>
+
         <form [formGroup]="loginForm" (ngSubmit)="OnFormSubmit(loginForm)">
           <div class="form-group">
             <label for="exampleInputEmail1">Email ID</label>
