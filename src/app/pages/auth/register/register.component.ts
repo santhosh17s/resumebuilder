@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../../@core/data/user.service';
+import { AlertService } from '../../../@core/data/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -10,32 +12,40 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   states: any = [
-   { state:'Tamil Nadu', abbrev:'TN' },
-   { state:'Andhra Predesh', abbrev:'AP' },
-   { state:'Assam', abbrev:'AS' },
-   { state:'Bigar', abbrev:'BR' },
-   { state:'Karnataka', abbrev:'KA' },
-   { state:'Gujarat', abbrev:'GJ' },
-   { state:'Haryana', abbrev:'HA' },
+   { name:'Tamil Nadu', abbrev:'TN' },
+   { name:'Andhra Predesh', abbrev:'AP' },
+   { name:'Assam', abbrev:'AS' },
+   { name:'Bigar', abbrev:'BR' },
+   { name:'Karnataka', abbrev:'KA' },
+   { name:'Gujarat', abbrev:'GJ' },
+   { name:'Haryana', abbrev:'HA' },
   ]
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private alertService:AlertService) { }
 
   ngOnInit() {
   
     //Validators.pattern('^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$')
 
      this.registerForm = this.fb.group({
-          userName: new FormControl('', [Validators.required, Validators.minLength(8)]),
-          password: new FormControl(''),
+          username: new FormControl('', [Validators.required, Validators.email]),
+          password: new FormControl('', [Validators.required, Validators.minLength(8)]),
           address: new FormControl(''),
           city: new FormControl(),
-          state: new FormControl(),
-          zip: new FormControl()
+          state: new FormControl()
      })
 
-     this.registerForm.controls['state'].setValue(this.states[0], {onlySelf: true});
+     this.registerForm.controls['state'].setValue(this.states[0].name, {onlySelf: true});
 
   }
+
+  submitRegister(submiRegForm){
+    console.log(submiRegForm.value);
+
+    this.userService.create(submiRegForm)
+        .subscribe( data => { this.alertService.success('Registration Successfull', true)},
+                    error => {this.alertService.error(error)} );
+  }
+
 
 }
