@@ -12,20 +12,31 @@ import { LogUser } from '../../@core/data/log-user.service';
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  user: User;
-  //currentUser: SystemUser;
-  //currentUser: SystemUser;
-
-  //@Output() loginUserNameEvent:EventEmitter<string> = new EventEmitter<string>();
+  private user: User[];
+  private currentUser: SystemUser;
+  private loginName: string;
+  private states: any = [
+    { name:'Tamil Nadu', abbrev:'TN' },
+    { name:'Andhra Predesh', abbrev:'AP' },
+    { name:'Assam', abbrev:'AS' },
+    { name:'Bigar', abbrev:'BR' },
+    { name:'Karnataka', abbrev:'KA' },
+    { name:'Gujarat', abbrev:'GJ' },
+    { name:'Haryana', abbrev:'HA' },
+   ]
 
   constructor(private logInfo: LogUser, private alertService: AlertService) { 
 
-    //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    //this.loginUserNameEvent.emit("sss");
-    //this.currentUser = this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.user = JSON.parse(localStorage.getItem('users'));
 
-    this.user = {
+    console.log("Dashboard:", this.user[0])
+    
+    
+    //console.log("Dashboard:",this.currentUser);
+    
+    /* this.user = {
       firstName : 'Santhosh',
       lastName : 'kumar',
       email : 'santhoshloud@gmail.com',
@@ -34,14 +45,14 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
       city : 'Chennai',
       state : 'TN',
       zip : 600000
-    };
+    }; */
   }
 
   ngOnInit() {
-    //console.log("welcome"); 
-  
-
-
+    
+    if (this.currentUser != null )  {
+      this.logInfo.changeLogInfo(this.currentUser.firstname );   
+    } 
   }
 
   ngAfterViewInit() {

@@ -6,6 +6,7 @@ import { debounceTime } from 'rxjs/operator/debounceTime';
 import { Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LogUser } from '../../../@core/data/log-user.service';
+import { SystemUser } from '../../../@core/data/systemuser.service';
 
 export interface admin {
    username: string,
@@ -26,10 +27,7 @@ export class LoginComponent implements OnInit {
   private loginMessage: Boolean = true;
   private returnUrl: string;
 
-  
-
   constructor(private logInfo:LogUser, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private auth: AuthenticationService, private alertService: AlertService) { 
-
   }
 
   ngOnInit() {
@@ -37,7 +35,6 @@ export class LoginComponent implements OnInit {
     // reset login status
     this.auth.logout();
     this.logInfo.changeLogInfo(null);
-
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';

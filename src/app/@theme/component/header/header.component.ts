@@ -16,21 +16,20 @@ import { LogUser } from "../../../@core/data/log-user.service";
 
     constructor(private logInfo:LogUser){
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      console.log(this.currentUser);
+      console.log("Header Const: ",this.currentUser);
     }
     
     ngOnInit() {
-
-      this.logInfo.changeLogInfo(this.currentUser.firstname);   
+   
+      if (this.currentUser != null )  {
+        this.logInfo.changeLogInfo(this.currentUser.firstname );   
+      } 
 
       this.logInfo.currentLogInfo
                       .subscribe( msg => { 
                         this.loginName =  msg;
-                        console.log(this.loginName) 
+                        console.log("Changed from header comp", this.loginName) 
                       });
-
-                  
-      
     }
 
     logout() {

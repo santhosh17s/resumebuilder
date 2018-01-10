@@ -3,63 +3,79 @@
         <div class="row justify-content-md-center">
           <div class="col-sm-8 col-md-8">
            
-                <h1 class="display-4 my-3" (click)="alertMessage()">Welcome to Resume Builder</h1>
+          <!-- <h1 class="display-4 my-4 mb-5 text-center " (click)="alertMessage()">Welcome to Resume Builder</h1> -->
 
-                <ul class="nav nav-pills justify-content-center my-5">
-                    <li class="nav-item"><a href="" class="nav-link active">My Info</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">My Info Edit</a></li>
-                </ul>
-
-           
-                <form #userForm="ngForm" (ngSubmit)="userSubmit()">
-                        <div class="form-row">
-                                <div class="col">
-                                  <div class="form-group"><input  type="text" class="form-control" placeholder="First name" #firstName="ngModel" [(ngModel)]="user.firstName" name="firstName" required>
-                                    <p *ngIf="firstName.invalid" class="warning">Name is required</p>
-                                  </div>
+                <ngb-tabset type="pills" justify="center">
+                  <ngb-tab title="My Info">
+                    <ng-template ngbTabContent >
+                      <div class="my-4">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">City</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let us of user">
+                                <td>{{ us.firstname }}</td>
+                                <td> {{ us.lastname }} </td>
+                                <td> {{ us.city }} </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>  
+                     </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Edit My Info">
+                      <ng-template ngbTabContent>
+                          <div class="my-4">
+                          <form #userForm="ngForm" (ngSubmit)="userSubmit()">
+                              <div class="form-row">
+                                      <div class="col">
+                                        <div class="form-group">
+                                          <input  type="text" class="form-control" placeholder="First name" #firstName="ngModel" [(ngModel)]="user.firstname" name="firstName" required>
+                                          <p *ngIf="firstName.invalid" class="warning">Name is required</p>
+                                        </div>
+                                      </div>
+                                      <div class="col">
+                                        <div class="form-group"><input  type="text" class="form-control" placeholder="Last name" #lastName="ngModel" [(ngModel)]="user.lastname" name="lastName" required>
+                                          <p *ngIf="lastName.invalid"  class="warning">Name is required</p></div>
+                                      </div>
+                                    </div>
+                              
+                                <div class="form-group">
+                                  <!-- <label for="inputEmail4">Email</label> -->
+                                  <input [(ngModel)]="user.username" name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
                                 </div>
-                                <div class="col">
-                                  <div class="form-group"><input  type="text" class="form-control" placeholder="Last name" #lastName="ngModel" [(ngModel)]="user.lastName" name="lastName" required>
-                                    <p *ngIf="lastName.invalid"  class="warning">Name is required</p></div>
+                              
+                              <div class="form-group">
+                                <!-- <label for="inputAddress">Address</label> -->
+                                <input [(ngModel)]="user.address" name="address" type="text" class="form-control" id="inputAddress" placeholder="Address 1">
+                              </div>
+                            
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <!-- <label for="inputCity">City</label> -->
+                                  <!-- <input [(ngModel)]="user.city" name="city" type="text" class="form-control" id="inputCity" placeholder="City"> -->
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <!-- <label for="inputState">State</label> -->
+                                  <!-- <select [(ngModel)]="user.state" id="inputState" class="form-control">
+                                      <option *ngFor="let st of states" [value]="st.name">{{ st.name }}</option>
+                                  </select> -->
                                 </div>
                               </div>
-                        
-                          <div class="form-group">
-                            <!-- <label for="inputEmail4">Email</label> -->
-                            <input [(ngModel)]="user.email" name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                          </div>
-                        
-                        <div class="form-group">
-                          <!-- <label for="inputAddress">Address</label> -->
-                          <input [(ngModel)]="user.address1" name="address1" type="text" class="form-control" id="inputAddress" placeholder="Address 1">
-                        </div>
-                        <div class="form-group">
-                              <input [(ngModel)]="user.address2" name="address2" type="text" class="form-control" id="inputAddress2" placeholder="Address 2">
-                        </div>
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <!-- <label for="inputCity">City</label> -->
-                            <input [(ngModel)]="user.city" name="city" type="text" class="form-control" id="inputCity" placeholder="City">
-                          </div>
-                          <div class="form-group col-md-4">
-                            <!-- <label for="inputState">State</label> -->
-                            <select id="inputState" class="form-control">
-                              <option selected>Choose State...</option>
-                              <option>...</option>
-                            </select>
-                          </div>
-                          <div class="form-group col-md-2">
-                            <!-- <label for="inputZip">Zip</label> -->
-                            <input [(ngModel)]="user.zip" name="zip" type="text" class="form-control" id="inputZip"  placeholder="Zip">
-                          </div>
-                        </div>
-                        
-                         <button type="submit" class="btn btn-primary">Update</button>
-                      </form>
-
-
+                              
+                               <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                          </div>  
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>    
 
              </div>
     </div>
     </div>
-    <p> FORM VALUE: {{ userForm.value | json }}</p>
+    <!-- <p> FORM VALUE: {{ userForm.value | json }}</p> -->
